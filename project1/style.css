@@ -9,6 +9,12 @@ body{
     background-color: #222;
 
 }
+header
+{
+    margin-top: 18px;
+    color: #ebfffc;
+    text-transform: uppercase;
+}
 .card{
     margin-top: 30px;
     width: 90%;
