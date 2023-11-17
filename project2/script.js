@@ -205,8 +205,7 @@ function hendleNextBtn() {
 
 function showscore() {
   resetState();
-  questionsElements.innerText =
-    "Your score  " + score + "out of " + questions.length + "!.";
+  questionsElements.innerHTML = `<center><p>You have completed the quiz ! <br> <br> Nice , You got ${score} out of ${questions.length} questions</p></center>`;
   nextbtn.innerHTML = "star again";
   nextbtn.style.display = "block";
 }
