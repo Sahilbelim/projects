@@ -1,244 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            box-sizing: border-box;
-
-        }
-
-        body {
-            background-color: #222;
-
-        }
-
-        header {
-            margin-top: 18px;
-            color: #ebfffc;
-            text-transform: uppercase;
-        }
-
-        .card {
-            margin-top: 30px;
-            width: 90%;
-            max-width: 470px;
-            background: linear-gradient(135deg, #00feda, #5b548a);
-            color: #fff;
-            margin: 20px auto 0;
-            border-radius: 20px;
-            padding: 40px 35px;
-            text-align: center;
-        }
-
-        .search {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-        }
-
-        .search input {
-            border: 0;
-            outline: 0;
-            background: #ebfffc;
-            color: #555;
-            padding: 10px 25px;
-
-            height: 60px;
-            border-radius: 30px;
-            flex: 1;
-            margin-right: 16px;
-            margin-left: -20px;
-            font-size: 18px;
-
-
-        }
-
-        .search button {
-            border: 0;
-            outline: 0;
-            margin-right: 16px;
-            padding: 5px;
-            background: #ebfffc;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-
-        }
-
-        .search button img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .weather {
-            display: none;
-        }
-
-        .weather-icon {
-            width: 170px;
-            margin-top: 30px;
-        }
-
-        .weather h1 {
-            font-size: 80px;
-            font-weight: 500;
-        }
-
-        .weather h2 {
-            font-size: 45px;
-            font-weight: 500;
-            margin-top: -10px;
-        }
-
-        .details {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            margin-top: 50px;
-        }
-
-        .col {
-            display: flex;
-            align-items: center;
-            text-align: left;
-
-        }
-
-        .col img {
-            width: 40px;
-            margin-right: 10px;
-        }
-
-        .humidity,
-        .wind {
-            font-size: 28px;
-            margin-top: -6px;
-
-        }
-
-        .error {
-
-            border: 0;
-            text-align: center;
-
-            margin-top: 20px;
-            outline: 0;
-            background: #e09f9f;
-            color: rgba(255, 0, 0, 0.811);
-            padding: 15px 25px 20px 20px;
-
-            height: 60px;
-            border-radius: 30px;
-            flex: 1;
-            margin-right: 8px;
-            font-size: 22px;
-            display: none;
-        }
-    </style>
-    <title>Weather</title>
+    <link rel="stylesheet" href="style.css">  
 </head>
-
 <body>
-
     <header>
-        <h1 align="center">find Weather</h1>
+        <h1 align="center">check Weather</h1>
     </header>
     <div class="card">
         <div class="search">
             <input type="text" placeholder="Enter City Name " spellcheck="false">
             <button><img class="icon" src="img/search.png" alt="search icon"></button>
         </div>
-        <div class="error">
-            Invalide City Name
-        </div>
+        <div class="error"></div>
         <div class="weather">
-            <img src="img/weather.png" alt="rain" class="weather-icon">
-            <h1 class="temp">22°C</h1>
-            <h2 class="city-name">new york</h2>
-
+            <img src=""  class="weather-icon">
+            <h1 class="temp"></h1>
+            <h2 class="city-name"></h2>
             <div class="details">
                 <div class="col">
-                    <img src="img/humidity(1).png" alt="humidity">
+                    <img src="">
                     <div>
-                        <p class="humidity">50%</p>
+                        <p class="humidity"></p>
                         <p>humidity </p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="img/wind(1).png" alt="wind">
+                    <img src="" >
                     <div>
-                        <p class="wind">15 km/h</p>
+                        <p class="wind"></p>
                         <p>wind speed </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <!-- <script src="script.js"></script> -->
-    <script>
-        const apiKey = "020dc987ddaf3b9ddb59e675a73537c2";
-        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
-        const weatherIcon = document.querySelector('.weather-icon');
-        const searchbox = document.querySelector(".search input");
-        const searchbtn = document.querySelector(".search button");
-        async function get_weather(city) {
-            const response = await fetch(apiUrl + city + "&appid=" + apiKey);
-            if (response.status == 404) {
-                document.querySelector(".error").style.display = "block";
-                document.querySelector(".weather").style.display = "none";
-            }
-            else {
-                document.querySelector(".error").style.display = "none";
-
-                const data = await response.json();
-
-
-                document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
-                document.querySelector(".city-name").innerHTML = data.name;
-                document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-                document.querySelector(".wind").innerHTML = data.wind.speed + "Km/h";
-
-                // console.log(data);
-                // console.log(data.name);
-                // console.log(data.main.temp);
-                // console.log(data.main.humidity);
-                // console.log(data.wind.speed);
-
-                if (data.weather[0].main == "Cloud") {
-                    weatherIcon.src = "img/weather(1).png";
-                } else if (data.weather[0].main == "Clear") {
-                    weatherIcon.src = "img/sun.png";
-                } else if (data.weather[0].main == "Rain") {
-                    weatherIcon.src = "img/weather(2).png";
-                } else if (data.weather[0].main == "Drizzle") {
-                    weatherIcon.src = "img/weather(3).png";
-                } else if (data.weather[0].main == "Mist") {
-                    weatherIcon.src = "img/weather.png";
-                }
-
-                document.querySelector(".weather").style.display = "block";
-                return data;
-            }
-        }
-        searchbtn.addEventListener("click", () => {
-            weather = get_weather(searchbox.value);
-        })
-        weather = get_weather();
-
-    </script>
+    <script src="script.js"></script>
 </body>
-
 </html>
