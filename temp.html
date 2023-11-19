@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+}
+
+.file-type {
+    background-color: #555;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+code {
+    display: block;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 align="center">Code Sharing Platform</h1>
+    </header>
+    <div class="container">
+        <div class="code-header">
+            <span class="file-type">HTML</span>
+            <button onclick="copyCode()">Copy Code</button>
+        </div>
+        <pre><code id="code" class="html" spellcheck="false">
+&lt;!DOCTYPE html
+&gt;&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;  
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1 align="center"&gt;Code Sharing Platform&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;div class="container"&gt;
+        &lt;textarea id="code" placeholder="Enter your code here"&gt;&lt;/textarea&gt;
+        &lt;button onclick="copyCode()"&gt;Copy Code&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+    </div>
+    
+    <script> function copyCode() {
+            var codeElement = document.getElementById("code");
+            codeElement.select();
+            document.execCommand("copy");
+            alert("Code copied to clipboard!");
+        }
+</script>
+</body>
+
+</html>
